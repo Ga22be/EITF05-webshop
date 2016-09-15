@@ -1,5 +1,5 @@
 <?php
-	$_host = "puccini.cs.lth.se";
+	$_host = "";
 	$_username = "";
 	$_password = "";
 	$_database = "";
