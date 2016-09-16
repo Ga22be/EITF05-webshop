@@ -11,6 +11,8 @@
 	<div id="container">
 		<h1>Welcome to Sidenvägen</h1>
 
+		<div id="resp"></div>
+		<br>
 		<form method="post" id="form-logreg">
 			<input type="text" placeholder="Username" name="username"></input>
 			<input type="password" placeholder="Password" name="password"></input>
