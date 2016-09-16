@@ -14,7 +14,13 @@ if (isset($_POST['username']) && isset($_POST['password']) /*&& isset($_POST['re
 	$result = $database->executeQuery($query, array($username));
 
 	$response = [];
-	if (empty($result)) {
+	 
+	if (empty($username) || empty($password) || empty($rep_password)) {
+		$response = [
+			'error' => true,
+			'msg' => 'One or more fields blank.'
+		];
+	} else if (empty($result)) {
 		if ($password == $rep_password) {
 			$query = 'INSERT INTO users VALUES(0, ?, ?, DEFAULT, DEFAULT)';
 
@@ -31,12 +37,8 @@ if (isset($_POST['username']) && isset($_POST['password']) /*&& isset($_POST['re
 				'msg' => 'Passwords must be equal.'
 			];
 		}
-	} else if (empty($username) || empty($password) || empty($rep_password)) {
-		$response = [
-			'error' => true,
-			'msg' => 'One or more fields blank.'
-		];
 	} else {
+
 		$response = [
 			'error' => true,
 			'msg' => 'Username already exists.'
