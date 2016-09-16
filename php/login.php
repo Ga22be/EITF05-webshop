@@ -16,7 +16,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 	$response = [];
 	if (!empty($result)) {
-		$pwhash = $database->passwordHash($password, $result[0]['salt']);
+		$options = [
+    		'cost' => 12,
+   			'salt' => $result[0]['salt'],
+			];
+		$pwhash = password_hash($password, PASSWORD_BCRYPT, $options);
 		if ($pwhash == $result[0]['password'])  {
 			$response['error'] = false;
 			$isLogin = true;
