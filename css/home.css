@@ -1,0 +1,25 @@
+body {
+	margin: 0 auto;
+}
+
+#header {
+	margin: 0 auto;
+	text-align: center;
+	text-decoration-style: wavy;
+}
+
+#container {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+input {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 5px;
+}
+
+button {
+	display: inline-block;
+}

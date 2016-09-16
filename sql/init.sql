@@ -14,7 +14,7 @@ CREATE TABLE Items(
 	_id INTEGER NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL UNIQUE,
 	description VARCHAR(255),
-	price DOUBLE, 
+	price DOUBLE,
 	PRIMARY KEY(_id)
 );
 
