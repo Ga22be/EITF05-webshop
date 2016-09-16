@@ -15,7 +15,7 @@ body {
 }
 
 #productContainer {
-	width: 600px;
+	width: 540px;
 	margin: auto;
 }
 
@@ -26,6 +26,37 @@ body {
 	display: inline-block;
 }
 
+#productImage {
+	width: 170px;
+	height: 240px;
+}
+
+#pHeader {
+	font-size: 200%;
+	font-weight: bold;
+}
+
+#pDesc::first-line {
+	font-weight: bold;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.price {
+	color: red;
+}
+
+#image {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+	width: 170px;
+	height: auto;
+}
+
+/*
 input {
 	display: block;
 	margin: 0 auto;
@@ -35,3 +66,4 @@ input {
 button {
 	display: inline-block;
 }
+*/

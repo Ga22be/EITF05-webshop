@@ -40,13 +40,16 @@
       //if($items->num_rows() > 0) {
         foreach ($items as $row) {
           echo "<div id=product>";
-          echo $row['name'];
-          echo "</br>";
-          echo "Product description:";
-          echo "</br>";
-          echo $row['description'];
-          echo "</br>";
-          echo '$' . $row['price'];
+          echo "<p id=pHeader>" . $row['name'] . "</p>";
+          echo "<div id=productImage><img id=image src='" . $row['image'] . "'></img> </div>";
+          echo "<p id=pDesc> Product description: </br>";
+          echo $row['description'] . "</p>";
+          echo "<p id=pPrice> <span class=\"bold\">Price</span>: ";
+          echo "<span class=\"price\">" . '$' . $row['price'] . "</span> </p>";
+          echo "<form id=\"cartAdd\">";
+          echo "Amount: <input type=\"number\" name=\"amount\" size=\"2\" min=\"1\" max=\"9\">";
+          echo "<button id=\"btn-add\">Add</button>";
+          echo "</form>";
           echo "</div>";
         }
       //}
