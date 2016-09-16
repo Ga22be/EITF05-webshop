@@ -14,6 +14,18 @@ body {
 	text-align: center;
 }
 
+#productContainer {
+	width: 600px;
+	margin: auto;
+}
+
+#product {
+	width: 180px;
+	height: 210px;
+	text-align: center;
+	display: inline-block;
+}
+
 input {
 	display: block;
 	margin: 0 auto;

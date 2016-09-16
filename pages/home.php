@@ -42,9 +42,11 @@
           echo "<div id=product>";
           echo $row['name'];
           echo "</br>";
+          echo "Product description:";
+          echo "</br>";
           echo $row['description'];
           echo "</br>";
-          echo $row['price'];
+          echo '$' . $row['price'];
           echo "</div>";
         }
       //}

@@ -13,12 +13,12 @@ CREATE TABLE Users(
 CREATE TABLE Items(
 	_id INTEGER NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL UNIQUE,
-	description VARCHAR(255),
+	description text,
 	price DOUBLE,
 	PRIMARY KEY(_id)
 );
 
 INSERT INTO Users(username, password) VALUES('test1', 'test1');
 INSERT INTO Users(username, password) VALUES('test2', 'test2');
-INSERT INTO Items(name, description, price) VALUES('test1', 'test1', 9.99);
-INSERT INTO Items(name, description, price) VALUES('test2', 'test2', 19.99);
+INSERT INTO Items(name, description, price) VALUES('Deadpool (Blu-Ray)', 'A higly acclaimed blockbuster from 2016', 9.99);
+INSERT INTO Items(name, description, price) VALUES('Chromecast', 'Google Chromecast 2nd generation', 19.99);
