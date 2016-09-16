@@ -12,9 +12,9 @@
 		<h1>Welcome to Sidenvägen</h1>
 
 		<form method="post" id="form-logreg">
-			<input type="text" placeholder="Username"></input>
-			<input type="password" placeholder="Password"></input>
-
+			<input type="text" placeholder="Username" name="username"></input>
+			<input type="password" placeholder="Password" name="password"></input>
+			
 			<button id="btn-login">Login</button>
 			<button id="btn-register">Register</button>
 		</form>
