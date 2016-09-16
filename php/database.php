@@ -20,8 +20,9 @@ class Database {
 			try {
 				$this->conn = new PDO("mysql:host=$this->_host;dbname=$this->_database",
 					$this->_username, $this->_password);
+				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch (PDOException $e) {
-				header('location: ../connectionerror.html');
+				header('location: ../pages/noDatabase.html');
 			}
 		}
 		return $this->conn;
