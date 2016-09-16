@@ -6,7 +6,7 @@ CREATE TABLE Users(
 	_id INTEGER AUTO_INCREMENT NOT NULL,
 	username VARCHAR(20) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL, -- Suitable length for BCRYPT / BLOWFISH
-	-- salt VARCHAR(32) NOT NULL, -- ? Decide on a salt size
+	salt VARCHAR(32) NOT NULL, -- ? Decide on a salt size
 	PRIMARY KEY(_id)
 );
 
