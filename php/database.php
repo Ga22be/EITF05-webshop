@@ -52,12 +52,6 @@ class Database {
 		return $rows;
 	}
 
-	public function passwordHash($password, $salt) {
-		return hash("SHA512", $salt . $password);
-	}
-
-	//-------------------------------------------------------------------------
-
 	public function getItems() {
 		$sql = "SELECT * FROM items";
 		$result = $this->executeQuery($sql);
