@@ -3,10 +3,10 @@ session_start();
 
 require_once('database.php');
 
-if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['rep_password'])) {
+if (isset($_POST['username']) && isset($_POST['password']) /*&& isset($_POST['rep_password'])*/) {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$rep_password = $_POST['rep_password'];
+ 	//$rep_password = $_POST['rep_password'];
 
 	$database = new Database();
 	$query = 'SELECT * FROM users WHERE username = ?';
@@ -14,17 +14,12 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['rep_
 
 	$response = [];
 	if (empty($result)) {
-		if ($password == $rep_password) {
-			$query = 'INSERT INTO users VALUES(?, ?, ?)';
-			$options = [
-			    'cost' => 12,
-			    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-			];
-			
+		if (/*$password == $rep_password*/true) {
+			$query = 'INSERT INTO users VALUES(?, ?)';
 
-			$pwhash = password_hash($password, PASSWORD_BCRYPT, $options);
+			$pwhash = password_hash($password, PASSWORD_DEFAULT);
 			
-			$database->executeQuery($query, array($username, $pwhash, $options['salt']));
+			$database->executeQuery($query, array($username, $pwhash));
 			$response = [
 				'error' => false,
 				'msg' => 'Account created.'
