@@ -8,11 +8,15 @@ $('#btn-login').click(() => {
 		dataType: 'json',
 		success: (data) => {
 			if (data.error == true) {
-				console.log('invalid credentials');
-				console.log(data.msg);
+				//console.log('invalid credentials');
+				//console.log(data.msg);
+				$('#resp').html(data.msg);
+				$('#resp').addClass('err');
+				$('#resp').removeClass('succ');
 			} else {
-				console.log('valid credentials');
-				console.log(data.msg);
+				//console.log('valid credentials');
+				//console.log(data.msg);
+				window.location.href = '../pages/home.php';
 			}
 		},
 		beforeSend: () => {
@@ -39,19 +43,24 @@ $('#btn-register').click(() => {
 		dataType: 'json',
 		success: (data) => {
 			if (data.error == true) {
-				console.log('invalid credentials');
-				console.log(data.msg);
+				//console.log('invalid credentials');
+				//console.log(data.msg);
+				$('#resp').addClass('err');
+				$('#resp').removeClass('succ');
 			} else {
-				console.log('valid credentials');
-				console.log(data.msg);
+				$('#resp').addClass('succ');
+				$('#resp').removeClass('err');
+				//console.log('valid credentials');
+				//console.log(data.msg);
 			}
+			$('#resp').html(data.msg);
 		},
 		beforeSend: () => {
 			$('#btn-register').html('Loading...');
 		},
 		complete: () => {
 			console.log('ajax completed');
-			$('#btn-register').html('Login');
+			$('#btn-register').html('Register');
 		},
 		error: (e) => {
 			console.error(e);

@@ -7,19 +7,26 @@ if (isset($_POST['username']) && isset($_POST['password']) /*&& isset($_POST['re
 	$username = $_POST['username'];
 	$password = $_POST['password'];
  	//$rep_password = $_POST['rep_password'];
+	$rep_password = $password;
 
 	$database = new Database();
 	$query = 'SELECT * FROM users WHERE username = ?';
 	$result = $database->executeQuery($query, array($username));
 
 	$response = [];
-	if (empty($result)) {
-		if (/*$password == $rep_password*/true) {
-			$query = 'INSERT INTO users VALUES(?, ?, ?)';
+	 
+	if (empty($username) || empty($password) || empty($rep_password)) {
+		$response = [
+			'error' => true,
+			'msg' => 'One or more fields blank.'
+		];
+	} else if (empty($result)) {
+		if ($password == $rep_password) {
+			$query = 'INSERT INTO users VALUES(0, ?, ?, DEFAULT, DEFAULT)';
 
 			$pwhash = password_hash($password, PASSWORD_DEFAULT);
 			
-			$database->executeQuery($query, array(0, $username, $pwhash));
+			$database->executeUpdate($query, array($username, $pwhash));
 			$response = [
 				'error' => false,
 				'msg' => 'Account created.'
@@ -30,12 +37,8 @@ if (isset($_POST['username']) && isset($_POST['password']) /*&& isset($_POST['re
 				'msg' => 'Passwords must be equal.'
 			];
 		}
-	} else if (empty($username) || empty($password) || empty($rep_password)) {
-		$response = [
-			'error' => true,
-			'msg' => 'One or more fields blank.'
-		];
 	} else {
+
 		$response = [
 			'error' => true,
 			'msg' => 'Username already exists.'
