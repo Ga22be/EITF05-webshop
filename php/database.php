@@ -52,6 +52,13 @@ class Database {
 		return $rows;
 	}
 
+	public function getItems() {
+		$sql = "SELECT * FROM items";
+		$result = $this->executeQuery($sql);
+
+		return $result;
+	}
+
 	/*
 	public function getPallets() {
 		$sql = "SELECT * FROM pallets";
@@ -79,7 +86,7 @@ class Database {
 			if(($row['ingredientAmount']*54) > $row['currentAmount']){
 				return -1;
 			}
-		}	
+		}
 		return $dbResult;
 	}
 
@@ -95,7 +102,7 @@ class Database {
 
 		$ingredientCheck = $this->checkIngredients($cookie);
 
-		if($ingredientCheck < 0){	
+		if($ingredientCheck < 0){
 			$this->getConnection()->rollBack();
 			return false;
 		}
@@ -104,7 +111,7 @@ class Database {
 
 		foreach($ingredientCheck as $credentials){
 			$sql = "UPDATE ingredients SET currentAmount = (currentAmount - (?*54)) WHERE ingredientName = ?";
-			$update = $this->executeUpdate($sql, array($credentials['ingredientAmount'], $credentials['ingredientName']));			
+			$update = $this->executeUpdate($sql, array($credentials['ingredientAmount'], $credentials['ingredientName']));
 		}
 		return true;
 	}
