@@ -15,11 +15,11 @@ if (isset($_POST['username']) && isset($_POST['password']) /*&& isset($_POST['re
 	$response = [];
 	if (empty($result)) {
 		if (/*$password == $rep_password*/true) {
-			$query = 'INSERT INTO users VALUES(?, ?)';
+			$query = 'INSERT INTO users VALUES(?, ?, ?)';
 
 			$pwhash = password_hash($password, PASSWORD_DEFAULT);
 			
-			$database->executeQuery($query, array($username, $pwhash));
+			$database->executeQuery($query, array(0, $username, $pwhash));
 			$response = [
 				'error' => false,
 				'msg' => 'Account created.'

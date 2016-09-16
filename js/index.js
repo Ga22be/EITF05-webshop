@@ -9,8 +9,10 @@ $('#btn-login').click(() => {
 		success: (data) => {
 			if (data.error == true) {
 				console.log('invalid credentials');
+				console.log(data.msg);
 			} else {
 				console.log('valid credentials');
+				console.log(data.msg);
 			}
 		},
 		beforeSend: () => {
