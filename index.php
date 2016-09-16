@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
 	<title>Sidenvägen</title>
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 	<script src="js/index.js"></script>
@@ -12,6 +9,14 @@
 	</style>
 </head>
 <body>
-	<h1>Welcome to Sidenvägen</h1>
+	<div id="container">
+		<h1>Welcome to Sidenvägen</h1>
+
+		<input type="text" placeholder="Username"></input>
+		<input type="password" placeholder="Password"></input>
+
+		<button>Login</button>
+		<button>Register</button>
+	</div>
 </body>
 </html>
