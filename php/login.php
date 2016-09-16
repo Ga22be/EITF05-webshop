@@ -11,13 +11,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 	$database = new Database();
 
-	$query = 'SELECT password, salt FROM users WHERE username = ?';
+	$query = 'SELECT password FROM users WHERE username = ?';
 	$result = $database->executeQuery($query, array($username));
 
 	$response = [];
 	if (!empty($result)) {
-		$pwhash = $database->passwordHash($password, $result[0]['salt']);
-		if ($pwhash == $result[0]['password'])  {
+		if (password_verify($password, $result[0]['password']))  {
 			$response['error'] = false;
 			$isLogin = true;
 			$_SESSION['username'] = $username;
@@ -34,7 +33,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		$response = [
 			'error' => true,
 			'msg' => 'Invalid credentials.'
-
 		];
 	}
 

@@ -53,21 +53,6 @@ class Database {
 		return $rows;
 	}
 
-	/**
- 	* Checks if the connection to the database has been established.
- 	*
- 	* @return true if the connection has been established
- 	*/
-	public function isConnected() {
-		return isset($this->conn);
-	}
-
-	public function passwordHash($password, $salt) {
-		return hash("SHA512", $salt . $password);
-	}
-
-	//-------------------------------------------------------------------------
-
 	public function getItems() {
 		$sql = "SELECT * FROM items";
 		$result = $this->executeQuery($sql);
