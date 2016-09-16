@@ -16,6 +16,7 @@ $('#btn-login').click(() => {
 			} else {
 				//console.log('valid credentials');
 				//console.log(data.msg);
+				window.location.href = '../pages/home.php';
 			}
 		},
 		beforeSend: () => {
