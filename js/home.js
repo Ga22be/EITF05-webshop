@@ -1,10 +1,16 @@
-$('#btn-add').click(() => {
-  console.log("Add clicked");
+let addFunc = function(e) {
+  console.log('Add clicked');
+  console.log(e.parentNode);
+  //alert(e.parentNode.id);
+
+
+  let sendData = $('#' + e.parentNode.id).serializeArray();
+  sendData.push({ name: 'id', value: e.parentNode.id });
 
   $.ajax({
     type: 'POST',
     url: '../php/addToCart.php',
-    data: $('cartAdd').serialize(),
+    data: sendData,
     dataType: 'json',
     success: (data) => {
       if(data.error == true) {
@@ -12,6 +18,8 @@ $('#btn-add').click(() => {
         console.log(data.msg);
       } else {
         console.log('Valid amount');
+        console.log('id: ' + data.id);
+        console.log('amount: ' + data.totalAmount);
         console.log(data.msg);
       }
     },
@@ -26,4 +34,10 @@ $('#btn-add').click(() => {
     }
   });
 
-})
+  return false;
+
+};
+
+//$(document).ready(function() {
+  //$('#btn-add').on('click', addFunc);
+//});

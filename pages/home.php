@@ -1,12 +1,11 @@
 <?php
+    session_start();
     require_once('../php/database.php');
 
-    /*
     if(!isset($_SESSION['username'])) { // Make sure to use a good variable
       die(header('location: ../index.php'));
     }
-    */
-    
+
     $db = new Database();
     $items = $db->getItems();
     /*
@@ -32,7 +31,8 @@
     <h1>Here Goes The Title</h1>
   </div>
 	<div id="container">
-    <p>You have successfully logged in, welcome *insert username*</p>
+    <p>You have successfully logged in, welcome <?php echo $_SESSION['username'] ?></p>
+
 	</div>
   <div id=productContainer>
     <?php
@@ -45,9 +45,9 @@
           echo $row['description'] . "</p>";
           echo "<p id=pPrice> <span class=\"bold\">Price</span>: ";
           echo "<span class=\"price\">" . '$' . $row['price'] . "</span> </p>";
-          echo "<form id=\"cartAdd\">";
+          echo "<form id=\"" . $row['_id'] . "\">";
           echo "Amount: <input type=\"number\" name=\"amount\" size=\"2\" min=\"1\" max=\"9\">";
-          echo "<button id=\"btn-add\">Add</button>";
+          echo "<button onclick=\"return addFunc(this)\" id=\"btn-add\">Add</button>";
           echo "</form>";
           echo "</div>";
         }
