@@ -11,6 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	$isLocked = false;
 
 	$database = new Database();
+	// $_SESSION["db"] = $database;
 
 	$query = 'SELECT password, fails, locked FROM users WHERE username = ?';
 	$result = $database->executeQuery($query, array($username));
