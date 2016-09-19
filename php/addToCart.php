@@ -15,9 +15,7 @@ if (isset($_POST['id']) && isset($_POST['amount'])) {
   if (!empty($id) && $amount > 0) {
     $cart[$id] += $amount;
 
-
     $_SESSION['cart'] = $cart;
-
 
     $response = [
       'error' => false,
@@ -25,17 +23,12 @@ if (isset($_POST['id']) && isset($_POST['amount'])) {
       'totalAmount' => $cart[$id],
       'msg' => 'Amount was added to cart.'
     ];
-
   } else {
     $response = [
       'error' => true,
       'msg' => 'Zero and negative amounts forbidden.'
     ];
   }
-
-
-
-
 } else {
   $response = [
     'error' => true,

@@ -14,6 +14,13 @@
 	<div id="container">
 		<h1>Welcome to Sidenvägen</h1>
 
+<?php 
+		print array_values($_COOKIE)[0] . '<br>';
+		foreach ($_COOKIE as $item) {
+			print $item . '<br>';
+		}
+?>
+
 		<div id="resp"></div>
 		<br>
 

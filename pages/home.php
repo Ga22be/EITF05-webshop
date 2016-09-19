@@ -32,8 +32,9 @@
   </div>
 	<div id="container">
     <p>You have successfully logged in, welcome <?php echo $_SESSION['username'] ?></p>
-
+		<button onclick="location.href = '../php/logout.php';">Logout</button>
 	</div>
+	<br>
   <div id=productContainer>
     <?php
       //if($items->num_rows() > 0) {
