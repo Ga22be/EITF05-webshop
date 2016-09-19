@@ -2,23 +2,97 @@ body {
 	margin: 0 auto;
 }
 
-#header {
+#topBar {
+	display: inline-block;
+	border-radius: 0px 0px 3px 3px;
+	background-color: #2196F3;
+	position: fixed;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	top: 0;
+	text-align: right;
 	margin: 0 auto;
+	height: 42px;
+	min-width: 100%;
+	color: #F5F5F5;
+}
+
+#header {
+	float: left;
+	height: inherit;
+	display: inline-block;
+	margin-left: 10px;
+
+	font-size: 34px;
+	font-weight: bolder;
 	text-align: center;
 	text-decoration-style: wavy;
 }
 
-#container {
-	width: 500px;
-	margin: 0 auto;
+#user {
+	height: inherit;
+	display: inline-block;
+}
+
+#userName{
+	margin: 9px;
+	display: inline-block;
+
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#cartContent {
+	display: inline-block;
+	width: 75px;
+}
+
+#cartImg {
+	display: inline-block;
+	float: left;
+	width: 24px;
+	height: auto;
+	filter: invert();
+}
+
+#cartAmount {
+	display: inline-block;
+	width: 40px;
 	text-align: center;
 }
 
-#container button {
+#topButtons {
+	display: inline-block;
 	float: right;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin: 5px 0px 5px 10px;
+	border-radius: 7px 0px 0px 7px;
+}
+
+.btn-top {
+	background-color: #FFA726;
+	border: 2px solid #FFA726;
+	width: 70px;
+	padding: 5px;
+	border-radius: 7px 0px 0px 7px;
+}
+
+.btn-top:hover {
+	background-color: #FFE0B2;
+}
+
+#btn-logout {
+	border-left: 0px;
+	float: right;
+	border-radius: 0;
+}
+
+#btn-cart {
+	border-right: 0px;
+	width: 100px;
 }
 
 #productContainer {
+	padding-top: 50px;
 	width: 540px;
 	margin: auto;
 }
@@ -59,15 +133,3 @@ body {
 	width: 170px;
 	height: auto;
 }
-
-/*
-input {
-	display: block;
-	margin: 0 auto;
-	margin-bottom: 5px;
-}
-
-button {
-	display: inline-block;
-}
-*/

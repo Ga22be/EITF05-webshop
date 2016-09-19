@@ -27,14 +27,22 @@
 	</style>
 </head>
 <body>
-  <div id="header">
-    <h1>Here Goes The Title</h1>
+  <div id="topBar">
+    <div id="header">
+      Sidenvägen
+    </div>
+    <div id="user">
+      <?php echo '<span id="userName">' . $_SESSION['username'] . '</span>' ?>
+    </div>
+    <div id="cartContent">
+      <img id="cartImg" src="../pictures/cart.png"></img>
+      <div id="cartAmount"><#></div>
+    </div>
+    <div id='topButtons'>
+      <button id="btn-cart" class="btn-top">Shopping Cart</button>
+      <button id="btn-logout" class="btn-top" onclick="location.href = '../php/logout.php';">Logout</button>
+    </div>
   </div>
-	<div id="container">
-    <p>You have successfully logged in, welcome <?php echo $_SESSION['username'] ?></p>
-		<button onclick="location.href = '../php/logout.php';">Logout</button>
-	</div>
-	<br>
   <div id=productContainer>
     <?php
       //if($items->num_rows() > 0) {
