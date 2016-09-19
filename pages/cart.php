@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once('../php/database.php');
 
@@ -14,15 +15,15 @@ require_once('../php/database.php');
 	}
 	 */
 
-	$cart = [];
+	//$cart = [];
 	$itemNames = [];
 
 	foreach($items as $key) {
-		$cart[$key['_id']] = 3;
+		//$cart[$key['_id']] = 3;
 		$itemNames[$key['_id']] = $key['name'];
 	}
 
-	$_SESSION['cart'] = $cart;
+	//$_SESSION['cart'] = $cart;
 
 	foreach ($_SESSION['cart'] as $key => $value) {
 		print $itemNames[$key] . ' ' . $value . '<br>';
