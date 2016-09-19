@@ -22,7 +22,8 @@ class Database {
 					$this->_username, $this->_password);
 				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch (PDOException $e) {
-				header('location: ../pages/noDatabase.html');
+				die($e);
+				//header('location: ../pages/noDatabase.html');
 			}
 		}
 		return $this->conn;

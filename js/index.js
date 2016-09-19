@@ -1,21 +1,22 @@
-$('#btn-login').click(() => {
-	console.log('Login clicked');
+let loginFunc = () => {
+	if ($('#form-login').hasClass('hide')) {
+		$('#form-register').addClass('hide');
+		$('#form-login').removeClass('hide');
+
+		return false;
+	}
 
 	$.ajax({
 		type: 'POST',
 		url: '../php/login.php',
-		data: $('#form-logreg').serialize(),
+		data: $('#form-login').serialize(),
 		dataType: 'json',
 		success: (data) => {
 			if (data.error == true) {
-				//console.log('invalid credentials');
-				//console.log(data.msg);
 				$('#resp').html(data.msg);
 				$('#resp').addClass('err');
 				$('#resp').removeClass('succ');
 			} else {
-				//console.log('valid credentials');
-				//console.log(data.msg);
 				window.location.href = '../pages/home.php';
 			}
 		},
@@ -32,26 +33,28 @@ $('#btn-login').click(() => {
 	});
 
 	return false;
-});
+};
 
-$('#btn-register').click(() => {
-	console.log('Register clicked');
+let registerFunc = () => {
+	if ($('#form-register').hasClass('hide')) {
+		$('#form-login').addClass('hide');
+		$('#form-register').removeClass('hide');
+
+		return false;
+	}
+
 	$.ajax({
 		type: 'POST',
 		url: '../php/register.php',
-		data: $('#form-logreg').serialize(),
+		data: $('#form-register').serialize(),
 		dataType: 'json',
 		success: (data) => {
 			if (data.error == true) {
-				//console.log('invalid credentials');
-				//console.log(data.msg);
 				$('#resp').addClass('err');
 				$('#resp').removeClass('succ');
 			} else {
 				$('#resp').addClass('succ');
 				$('#resp').removeClass('err');
-				//console.log('valid credentials');
-				//console.log(data.msg);
 			}
 			$('#resp').html(data.msg);
 		},
@@ -68,4 +71,11 @@ $('#btn-register').click(() => {
 	});
 
 	return false;
+};
+
+$(document).ready(() => {
+	$('#btn-toRegister').on('click', registerFunc);
+	$('#btn-register').on('click', registerFunc);
+	$('#btn-toLogin').on('click', loginFunc);
+	$('#btn-login').on('click', loginFunc);
 });
