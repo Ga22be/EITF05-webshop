@@ -27,6 +27,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	if ($diffTime > $lockoutTime) {
 		if (!empty($result)) {
 			if (password_verify($password, $result[0]['password']))  {
+				session_regenerate_id();
+
 				$response['error'] = false;
 				$isLogin = true;
 				$_SESSION['username'] = $username;

@@ -1,4 +1,7 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
 	<title>Sidenvägen</title>
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 	<style type="text/css">
@@ -13,11 +16,24 @@
 
 		<div id="resp"></div>
 		<br>
-		<form method="post" id="form-logreg">
+
+		<!-- login form-->
+		<form method="post" id="form-login">
 			<input type="text" placeholder="Username" name="username"></input>
 			<input type="password" placeholder="Password" name="password"></input>
 			
 			<button id="btn-login">Login</button>
+			<button id="btn-toRegister">Register</button>
+		</form>
+
+		<!-- registration form -->
+		<form method="post" id="form-register" class="hide">
+			<input type="text" placeholder="Username" name="username"></input>
+			<input type="password" placeholder="Password" name="password"></input>
+			<input type="password" placeholder="Repeat password" name="rep_password"></input>
+			<input type="text" placeholder="Address" name="address"></input>
+			
+			<button id="btn-toLogin">Go back</button>
 			<button id="btn-register">Register</button>
 		</form>
 	</div>
