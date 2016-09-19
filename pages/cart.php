@@ -1,7 +1,10 @@
 <?php
-session_start();
+	session_start();
+	require_once('../php/database.php');
 
-require_once('../php/database.php');
+	if(!isset($_SESSION['username'])) { // Make sure to use a good variable
+		die(header('location: ../index.php'));
+	}
 
 //if (isset($_SESSION['cart'])) {
 	$db = new Database();
