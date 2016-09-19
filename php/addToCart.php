@@ -13,7 +13,12 @@ if (isset($_POST['id']) && isset($_POST['amount'])) {
   }
 
   if (!empty($id) && $amount > 0) {
-    $cart[$id] += $amount;
+
+		if (isset($cart[$id])) {
+			$cart[$id] += $amount;
+		} else {
+			$cart[$id] = $amount;
+		}
 
     $_SESSION['cart'] = $cart;
 
