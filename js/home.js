@@ -2,10 +2,10 @@ $('#btn-add').click(() => {
   console.log("Add clicked");
 
   $.ajax({
-    type='POST',
-    url='../php/addToCart.php',
+    type: 'POST',
+    url: '../php/addToCart.php',
     data: $('cartAdd').serialize(),
-    dataType='json',
+    dataType: 'json',
     success: (data) => {
       if(data.error == true) {
         console.log('Invalid amount');
@@ -19,7 +19,7 @@ $('#btn-add').click(() => {
 
     },
     complete: () => {
-      .console.log('Ajax completed');
+      console.log('Ajax completed');
     },
     error: (e) => {
       console.error(e);

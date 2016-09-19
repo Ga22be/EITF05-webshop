@@ -1,13 +1,12 @@
 <?php
     require_once('../php/database.php');
-    //require_once('../php/connect_data.php');
 
     /*
     if(!isset($_SESSION['username'])) { // Make sure to use a good variable
-      die(header('location: index.php'));
+      die(header('location: ../index.php'));
     }
     */
-
+    
     $db = new Database();
     $items = $db->getItems();
     /*
@@ -56,5 +55,7 @@
 
     ?>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src='../js/home.js'></script>
 </body>
 </html>
