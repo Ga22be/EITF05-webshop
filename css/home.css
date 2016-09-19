@@ -24,8 +24,6 @@ body {
 
 	font-size: 34px;
 	font-weight: bolder;
-	text-align: center;
-	text-decoration-style: wavy;
 }
 
 #user {
@@ -93,6 +91,7 @@ body {
 
 #productContainer {
 	padding-top: 50px;
+
 	width: 540px;
 	margin: auto;
 }

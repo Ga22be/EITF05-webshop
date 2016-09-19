@@ -45,7 +45,6 @@
   </div>
   <div id=productContainer>
     <?php
-      //if($items->num_rows() > 0) {
         foreach ($items as $row) {
           echo "<div id=product>";
           echo "<p id=pHeader>" . $row['name'] . "</p>";
@@ -60,7 +59,6 @@
           echo "</form>";
           echo "</div>";
         }
-      //}
 
     ?>
   </div>
