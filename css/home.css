@@ -4,7 +4,6 @@ body {
 
 #topBar {
 	display: inline-block;
-	border-radius: 0px 0px 3px 3px;
 	background-color: #2196F3;
 	position: fixed;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -63,7 +62,6 @@ body {
 	float: right;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	margin: 5px 0px 5px 10px;
-	border-radius: 7px 0px 0px 7px;
 }
 
 .btn-top {
@@ -71,11 +69,11 @@ body {
 	border: 2px solid #FFA726;
 	width: 70px;
 	padding: 5px;
-	border-radius: 7px 0px 0px 7px;
 }
 
 .btn-top:hover {
 	background-color: #FFE0B2;
+	border: 2px solid #FFE0B2;
 }
 
 #btn-logout {
@@ -131,18 +129,3 @@ body {
 	width: 170px;
 	height: auto;
 }
-<<<<<<< HEAD
-
-/*
-input {
-	display: block;
-	margin: 0 auto;
-	margin-bottom: 5px;
-}
-
-button {
-	display: inline-block;
-}
-*/
-=======
->>>>>>> 68d7f1f4565d6565fb7e5520ad71442f2babbaad
