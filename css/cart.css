@@ -1,0 +1,20 @@
+body {
+	margin: 0 auto;
+}
+
+#header {
+	margin: 0 auto;
+	text-align: center;
+	text-decoration-style: wavy;
+}
+
+#container {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#cartContainer {
+  width: 600px;
+  margin: auto;
+}
