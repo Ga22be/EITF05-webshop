@@ -23,7 +23,7 @@ class Database {
 				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch (PDOException $e) {
 				die($e);
-				//header('location: ../pages/noDatabase.html');
+				header('location: ../pages/noDatabase.html');
 			}
 		}
 		return $this->conn;
