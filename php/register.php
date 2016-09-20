@@ -22,11 +22,12 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['rep_
 		];
 	} else if (empty($result)) {
 		if ($password == $rep_password) {
-			$query = 'INSERT INTO users VALUES(0, ?, ?, ?, DEFAULT, DEFAULT)';
+			$query = 'INSERT INTO users VALUES(0, ?, ?, ?, DEFAULT, ?)';
+			$time = "1970-01-01 23:59:59";
 
 			$pwhash = password_hash($password, PASSWORD_DEFAULT);
 			
-			$database->executeUpdate($query, array($username, $pwhash, $address));
+			$database->executeUpdate($query, array($username, $pwhash, $address, $time));
 			$response = [
 				'error' => false,
 				'msg' => 'Account created.'

@@ -11,13 +11,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	$isLocked = false;
 
 	$database = new Database();
-	// $_SESSION["db"] = $database;
 
 	$query = 'SELECT password, fails, locked FROM users WHERE username = ?';
 	$result = $database->executeQuery($query, array($username));
 
 	$lockTime = strtotime($result[0]['locked']);
 	$currentTime = strtotime(date('Y-m-d H:i:s'));
+
 	$diffTime = $currentTime - $lockTime;
 
 	$lockoutTime = 300;
