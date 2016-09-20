@@ -18,3 +18,10 @@ body {
   width: 600px;
   margin: auto;
 }
+
+#purchaseContainer {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+

@@ -23,7 +23,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['rep_
 	} else if (empty($result)) {
 		if ($password == $rep_password) {
 			$query = 'INSERT INTO users VALUES(0, ?, ?, ?, DEFAULT, ?)';
-			$time = "1970-01-01 23:59:59";
+			$time = "1970-01-01 23:59:59"; // If this looks stupid, blame mysql, DEFAULT keyword for TIMESTAMP differs on mysql servers.
 
 			$pwhash = password_hash($password, PASSWORD_DEFAULT);
 			

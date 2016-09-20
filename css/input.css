@@ -1,0 +1,39 @@
+#resp {
+	margin: 0 auto;
+	width: 200px;
+}
+
+.err {
+	background-color: #f2dede;
+	color: #a94442;
+}
+
+.succ {
+	background-color: #dff0d8;
+	color: #3c763d;
+}
+
+textarea, input { outline: none; }
+
+input {
+	height: 30px;
+	width: 200px;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 5px;
+	/* border: 3px solid #CCC; */
+	border: 1px solid #CCC;
+	padding: 2px;
+	text-align: center;
+}
+
+input:focus {
+	border: 1px solid #555;
+}
+
+button {
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	margin-top: 5px;
+}

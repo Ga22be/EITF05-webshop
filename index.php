@@ -6,6 +6,7 @@
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 	<style type="text/css">
 		@import 'https://fonts.googleapis.com/css?family=Roboto';
+		@import 'css/input.css';
 		@import 'css/index.css';
 		@import 'css/global.css';
 	</style>
