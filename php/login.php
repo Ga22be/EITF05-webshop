@@ -20,7 +20,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 	$diffTime = $currentTime - $lockTime;
 
-	$lockoutTime = 300;
+	$lockoutTime = 300; // time in seconds to lock user account
 
 	$response = [];
 

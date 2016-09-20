@@ -43,6 +43,7 @@
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 	<style type="text/css">
 		@import 'https://fonts.googleapis.com/css?family=Roboto';
+		@import '../css/input.css';
 		@import '../css/cart.css';
 		@import '../css/global.css';
 	</style>
@@ -62,5 +63,20 @@
 			}
 		?>
 	</div>
+	<div id="purchaseContainer">
+		<div id="resp"></div>
+
+		<br>
+
+		<!-- login form-->
+		<form method="post" id="form-login">
+			<input type="text" placeholder="Username" name="username"></input>
+			<input type="password" placeholder="Password" name="password"></input>
+			
+			<button id="btn-login">Purchase</button>
+		</form>
+	</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src='../js/cart.js'></script>
 </body>
 </html>
