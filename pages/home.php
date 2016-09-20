@@ -39,7 +39,7 @@
       <div id="cartAmount"><#></div>
     </div>
     <div id='topButtons'>
-      <button id="btn-cart" class="btn-top">Shopping Cart</button>
+      <button id="btn-cart" class="btn-top" onclick="location.href = 'cart.php'">Shopping Cart</button>
       <button id="btn-logout" class="btn-top" onclick="location.href = '../php/logout.php';">Logout</button>
     </div>
   </div>
