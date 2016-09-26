@@ -57,7 +57,15 @@
 		</div>
 		<div id="cartContent">
 			<img id="cartImg" src="../pictures/cart.png"></img>
-			<div id="cartAmount"><#></div>
+			<div id="cartAmount">
+<?php
+if (count($_SESSION['cartItems']) > 0) {
+	echo $_SESSION['cartItems'];
+} else {
+	echo 0;
+}
+?>
+			</div>
 		</div>
 		<div id='topButtons'>
 			<button id="btn-logout" class="btn-top waves-effect" onclick="location.href = '../php/logout.php';">Logout</button>

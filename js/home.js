@@ -1,3 +1,17 @@
+let updateCart = () => {
+	$.ajax({
+		type: 'POST',
+		url: '../php/numCartItems.php',
+		dataType: 'json',
+		success: (data) => {
+			$('#cartAmount').html(data);
+		},
+		error: (e) => {
+			console.error(e);
+		}
+	});
+};
+
 let addFunc = function(e) {
 	console.log('Add clicked');
 	console.log(e.parentNode);
@@ -26,6 +40,7 @@ let addFunc = function(e) {
 		},
 		complete: () => {
 			console.log('Ajax completed');
+			updateCart();
 		},
 		error: (e) => {
 			console.error(e);
