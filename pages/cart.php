@@ -80,7 +80,7 @@
 
 				$total += $itemNames[$key][1]*$value;
 			}
-			echo "<tr><td id='total'>Total:</td><td></td><td></td><td>" . '$' . $total . "</td></tr>";
+			echo "<tr><td></td><td></td><td></td><td id='sum'>" . '$' . $total . "</td></tr>";
 		?>
 		</table>
 	</div>
