@@ -16,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['ispu
 
 	$database = new Database();
 
-	$query = 'SELECT password, fails, locked FROM users WHERE username = ?';
+	$query = 'SELECT password, fails, locked, address FROM users WHERE username = ?';
 	$result = $database->executeQuery($query, array($username));
 
 	$lockTime = strtotime($result[0]['locked']);
@@ -36,6 +36,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['ispu
 				$response['error'] = false;
 				$isLogin = true;
 				$_SESSION['username'] = $username;
+				$_SESSION['address'] = $result[0]['address'];
 
 
 				$time = "1970-01-01 23:59:59"; // If this looks stupid, blame mysql, DEFAULT keyword for TIMESTAMP differs on mysql servers.
