@@ -31,7 +31,7 @@ input:focus {
 	border: 1px solid #555;
 }
 
-button {
+form button {
 	display: inline-block;
 	width: 100px;
 	height: 30px;
