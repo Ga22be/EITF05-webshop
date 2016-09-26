@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' ajax.googleapis.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;">
 	<meta charset="UTF-8">
 	<title>Sidenvägen</title>
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
