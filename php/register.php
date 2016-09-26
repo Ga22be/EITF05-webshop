@@ -27,7 +27,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['rep_
 
 			$pwhash = password_hash($password, PASSWORD_DEFAULT);
 			
-			$database->executeUpdate($query, array($username, $pwhash, $address, $time));
+			$database->executeUpdate($query, array(htmlspecialchars($username), $pwhash, htmlspecialchars($address), $time));
 			$response = [
 				'error' => false,
 				'msg' => 'Account created.'

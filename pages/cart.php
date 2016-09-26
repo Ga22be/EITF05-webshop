@@ -91,9 +91,9 @@
 
 		<!-- login form-->
 		<form method="post" id="form-login">
-			<input type="text" placeholder="Username" name="username"></input>
-			<input type="password" placeholder="Password" name="password"></input>
-
+			<input type="hidden" placeholder="Username" name="username">
+			<input type="password" placeholder="Password" name="password">
+			<input type="hidden" name="ispurchase" value="true">
 			<button id="btn-login">Purchase</button>
 		</form>
 	</div>

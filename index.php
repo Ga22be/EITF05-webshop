@@ -15,20 +15,14 @@
 	<div id="container">
 		<h1>Welcome to Sidenvägen</h1>
 
-<?php 
-		print array_values($_COOKIE)[0] . '<br>';
-		foreach ($_COOKIE as $item) {
-			print $item . '<br>';
-		}
-?>
-
 		<div id="resp"></div>
 		<br>
 
 		<!-- login form-->
 		<form method="post" id="form-login">
-			<input type="text" placeholder="Username" name="username"></input>
-			<input type="password" placeholder="Password" name="password"></input>
+			<input type="text" placeholder="Username" name="username">
+			<input type="password" placeholder="Password" name="password">
+			<input type="hidden" name="ispurchase" value="false">
 			
 			<button id="btn-login">Login</button>
 			<button id="btn-toRegister">Register</button>
