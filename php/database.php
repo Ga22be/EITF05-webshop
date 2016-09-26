@@ -61,6 +61,13 @@ class Database {
 		return $result;
 	}
 
+	public function getPosts() {
+		$sql = "SELECT * FROM posts";
+		$result = $this->executeQuery($sql);
+
+		return $result;
+	}
+
 	/*
 	public function getPallets() {
 		$sql = "SELECT * FROM pallets";

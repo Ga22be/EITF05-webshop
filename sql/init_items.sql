@@ -1,7 +1,7 @@
 CREATE TABLE items(
 	_id INTEGER NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL UNIQUE,
-	description text,
+	description TEXT,
 	price DOUBLE,
 	image VARCHAR(100),
 	PRIMARY KEY(_id)

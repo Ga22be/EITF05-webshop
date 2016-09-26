@@ -151,3 +151,16 @@ body {
 	width: 170px;
 	height: auto;
 }
+
+#postsContainer {
+	margin-top: 10px;
+}
+
+#postsContainer form {
+	margin-bottom: 10px;
+}
+
+.post {
+	margin-bottom: 10px;
+	border: 3px solid black;
+}
