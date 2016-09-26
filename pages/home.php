@@ -67,8 +67,8 @@ foreach ($items as $row) {
 	</div>
 	<div id="postsContainer">
 		<form action="post" id="form-post">
-			<input type="text" placeholder="Insert funny comment..." name="comment">
-			<button>Post</button>
+			<input id="post-field" type="text" placeholder="Insert funny comment..." name="comment">
+			<button id="btn-post">Post</button>
 		</form>
 
 <?php
