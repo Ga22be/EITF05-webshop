@@ -3,9 +3,13 @@ session_start();
 
 require_once('database.php');
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-	$username = $_POST['username'];
+if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['ispurchase'])) {
+	$username = htmlspecialchars($_POST['username']);
 	$password = $_POST['password'];
+
+	if ($_POST['ispurchase'] == 'true') {
+		$username = $_SESSION['username'];
+	}
 
 	$isLogin = false;
 	$isLocked = false;
@@ -33,8 +37,14 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 				$isLogin = true;
 				$_SESSION['username'] = $username;
 
-				$clearFails = 'UPDATE users SET fails = ? WHERE username = ?';
-				$database->executeUpdate($clearFails, array(0, $username));
+
+				$time = "1970-01-01 23:59:59"; // If this looks stupid, blame mysql, DEFAULT keyword for TIMESTAMP differs on mysql servers.
+				$clearFails = 'UPDATE users SET fails = ?, locked = ? WHERE username = ?';
+				$database->executeUpdate($clearFails, array(0, $time, $username));
+
+				if ($_POST['ispurchase'] == 'true') {
+					$_SESSION['madepurchase'] = true;
+				}
 			}
 		}
 
@@ -47,16 +57,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			if (!empty($result)) {
 				if ($result[0]['fails'] >= 3) {
 					$lockUpdate  = 'UPDATE users SET fails = ?, locked = now() WHERE username = ?';
-					$database->executeUpdate($lockUpdate,array(0, $username));
+					$database->executeUpdate($lockUpdate, array(0, $username));
 
 					$response = [
 						'error' => true,
 						'msg' => 'Account has been locked for 5 minutes.'
 					];
 				} else {
-					$failsUpdate = 'UPDATE users SET fails = ? WHERE username = ?';
+					$time = "1970-01-01 23:59:59"; // If this looks stupid, blame mysql, DEFAULT keyword for TIMESTAMP differs on mysql servers.
+					$failsUpdate = 'UPDATE users SET fails = ?, locked = ? WHERE username = ?';
 					$database->executeUpdate($failsUpdate,
-						array($result[0]['fails']+1, $username));
+						array($result[0]['fails']+1, $time, $username));
 
 					$response = [
 						'error' => true,
