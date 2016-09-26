@@ -66,15 +66,16 @@ foreach ($items as $row) {
 ?>
 	</div>
 	<div id="postsContainer">
-		<form action="POST">
-			<input type="text" placeholder="Insert funny comment...">
+		<form action="post" id="form-post">
+			<input type="text" placeholder="Insert funny comment..." name="comment">
+			<button>Post</button>
 		</form>
 
 <?php
 foreach ($posts as $post) {
 	echo "<div class=\"post\">";
 	echo "<b><p>" . $post['username'] . "</p></b>";
-	echo "<p>" . $post['usercomment'] . "</p>";
+	echo "<p id=\"text\">" . $post['usercomment'] . "</p>";
 	echo "</div>";
 }
 ?>
