@@ -17,6 +17,11 @@ foreach($items as $key) {
 
 
 ?>
+<html>
+<head>
+<title>Sidenvägen</title>
+</head>
+<body>
 <table <?php if(count($_SESSION['cart']) == 0) {echo "class=\"hide\"";} ?>>
 	<tr id='tHeader'>
 		<th id='product'>Product</th>
@@ -52,3 +57,4 @@ unset($_SESSION['cart']);
 unset($_SESSION['cartItems']);
 
 ?>
+</body>

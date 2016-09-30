@@ -21,7 +21,10 @@ if (isset($_POST['id']) && isset($_POST['amount'])) {
 		}
 
     $_SESSION['cart'] = $cart;
-		$_SESSION['cartItems'] += $amount;
+    if(!isset($_SESSION['cartItems'])){
+      $_SESSION['cartItems'] = 0;
+    }
+    $_SESSION['cartItems'] += $amount;
 
     $response = [
       'error' => false,

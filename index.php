@@ -24,7 +24,7 @@
 			<input type="text" placeholder="Username" name="username">
 			<input type="password" placeholder="Password" name="password">
 			<input type="hidden" name="ispurchase" value="false">
-			
+
 			<button id="btn-login">Login</button>
 			<button id="btn-toRegister">Register</button>
 		</form>
@@ -35,7 +35,7 @@
 			<input type="password" placeholder="Password" name="password"></input>
 			<input type="password" placeholder="Repeat password" name="rep_password"></input>
 			<input type="text" placeholder="Address" name="address"></input>
-			
+
 			<button id="btn-toLogin">Go back</button>
 			<button id="btn-register">Register</button>
 		</form>

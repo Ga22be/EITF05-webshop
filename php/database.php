@@ -9,6 +9,10 @@ class Database {
 
 	public function __construct() {
 		require('connect_data.php');
+//		$this->_host = ini_get("mysql.default.host");
+//		$this->_username = ini_get("mysql.default.user");
+//		$this->_password = ini_get("mysql.default.password");
+//		$this->_database = ini_get("mysql.default.database");
 		$this->_host = $_host;
 		$this->_username = $_username;
 		$this->_password = $_password;
@@ -33,6 +37,21 @@ class Database {
 		try {
 			$stmt = $this->getConnection()->prepare($query);
 			$stmt->execute($param);
+
+			$result = $stmt->fetchAll();
+		} catch (PDOException $e) {
+			$error = "*** Internal error: " . $e->getMessage() . "\n query: " . $query;
+			die($error);
+		}
+		return $result;
+	}
+
+	// Function to execute provided query without prep-stat
+	public function executeInjectionQuery($query) {
+		$result = false;
+		try {
+			$stmt = $this->getConnection()->query($query);
+
 			$result = $stmt->fetchAll();
 		} catch (PDOException $e) {
 			$error = "*** Internal error: " . $e->getMessage() . "\n query: " . $query;

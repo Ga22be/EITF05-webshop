@@ -4,7 +4,8 @@ session_start();
 require_once('database.php');
 
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['ispurchase'])) {
-	$username = htmlspecialchars($_POST['username']);
+	//$username = htmlspecialchars($_POST['username']);
+	$username = $_POST['username'];
 	$password = $_POST['password'];
 
 	if ($_POST['ispurchase'] == 'true') {
@@ -16,10 +17,16 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['ispu
 
 	$database = new Database();
 
-	$query = 'SELECT password, fails, locked, address FROM users WHERE username = ?';
-	$result = $database->executeQuery($query, array($username));
+// Switch these to add back security vs sql-injections, dont forget content policy on home.php 
+//	$query = 'SELECT password, fails, locked, address FROM users WHERE username = ?';
+	$query = 'SELECT password, fails, locked, address FROM users WHERE username = \'' . $username . '\'';
+//	$result = $database->executeQuery($query, array($username));
+	$result = $database->executeInjectionQuery($query);
 
-	$lockTime = strtotime($result[0]['locked']);
+	$lockTime = 0;
+	if (isset($result[0]['locked'])) {
+		$lockTime = strtotime($result[0]['locked']);
+	}
 	$currentTime = strtotime(date('Y-m-d H:i:s'));
 
 	$diffTime = $currentTime - $lockTime;
@@ -43,7 +50,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['ispu
 				$clearFails = 'UPDATE users SET fails = ?, locked = ? WHERE username = ?';
 				$database->executeUpdate($clearFails, array(0, $time, $username));
 
-				if ($_POST['ispurchase'] == 'true') {
+				if (isset($_SESSION['cart']) && $_POST['ispurchase'] == 'true') {
 					$_SESSION['madepurchase'] = true;
 				}
 			}

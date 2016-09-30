@@ -3,7 +3,7 @@ session_start();
 require_once('../php/database.php');
 
 if(!isset($_SESSION['username'])) { // Make sure to use a good variable
-	die(header('location: ../index.php'));
+	die(header('location: /index.php'));
 }
 
 $db = new Database();
@@ -21,7 +21,8 @@ $posts = $db->getPosts();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' ajax.googleapis.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;">
+	<!-- To Be able to load offsite addresses in SQL-injected item-->
+	<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' ajax.googleapis.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;"> -->
 	<meta charset="UTF-8">
 	<title>Sidenvägen</title>
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
@@ -43,7 +44,8 @@ $posts = $db->getPosts();
 			<img id="cartImg" src="../pictures/cart.png"></img>
 			<div id="cartAmount">
 <?php
-if (count($_SESSION['cartItems']) > 0) {
+//isset is needed for WAMP, otherwise an error is produced
+if (isset($_SESSION['cartItems']) && count($_SESSION['cartItems']) > 0) {
 	echo $_SESSION['cartItems'];
 } else {
 	echo 0;
@@ -83,7 +85,7 @@ foreach ($items as $row) {
 <?php
 foreach ($posts as $post) {
 	echo "<div class=\"post\">";
-	echo "<b><p>" . $post['username'] . "</p></b>";
+	echo "<p id='postUser'>" . $post['username'] . "</p>";
 	echo "<p id=\"text\">" . $post['usercomment'] . "</p>";
 	echo "</div>";
 }
