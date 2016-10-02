@@ -152,15 +152,8 @@ td#product {
 	font-weight: bold;
 }
 
-td#total {
-	font-size: 110%;
-	font-weight: bold;
-	text-align: left;
+td#sum {
 	border-top: 1px solid black;
-}
-
-td#amount {
-
 }
 
 #purchaseContainer {

@@ -40,7 +40,8 @@
 			<img id="cartImg" src="../pictures/cart.png"></img>
 			<div id="cartAmount">
 <?php
-if (count($_SESSION['cartItems']) > 0) {
+//isset is needed for WAMP, otherwise an error is produced
+if (isset($_SESSION['cartItems']) && count($_SESSION['cartItems']) > 0) {
 	echo $_SESSION['cartItems'];
 } else {
 	echo 0;
@@ -53,23 +54,24 @@ if (count($_SESSION['cartItems']) > 0) {
 		</div>
 	</div>
 	<div id="cartContainer">
-		<table <?php if(count($_SESSION['cart']) == 0) {echo "class=\"hide\"";} ?>>
+		<table <?php if(!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {echo "class=\"hide\"";} ?>>
 			<tr id='tHeader'>
 				<th id='product'>Product</th><th>Amount</th><th>Price/Item</th><th>Price</th>
 			</tr>
 		<?php
 			$total = 0;
-			foreach ($_SESSION['cart'] as $key => $value) {
-				echo "<tr>";
-				echo "<td id='product'>" . $itemNames[$key][0] . "	</td>";
-				echo "<td id='amount'>" . $value . "</td>";
-				echo "<td id='price/item'>" . '$' . $itemNames[$key][1] . "</td>";
-				echo "<td id='price'>" . '$' . $itemNames[$key][1]*$value . "</td>";
-				echo "</tr>";
-
+			if (isset($_SESSION['cart'])) {
+				foreach ($_SESSION['cart'] as $key => $value) {
+					echo "<tr>";
+					echo "<td id='product'>" . $itemNames[$key][0] . "	</td>";
+					echo "<td id='amount'>" . $value . "</td>";
+					echo "<td id='price/item'>" . '$' . $itemNames[$key][1] . "</td>";
+					echo "<td id='price'>" . '$' . $itemNames[$key][1]*$value . "</td>";
+					echo "</tr>";
+			}
 				$total += $itemNames[$key][1]*$value;
 			}
-			echo "<tr><td id='total'>Total:</td><td></td><td></td><td>" . '$' . $total . "</td></tr>";
+			echo "<tr><td></td><td></td><td></td><td id='sum'>" . '$' . $total . "</td></tr>";
 		?>
 		</table>
 	</div>

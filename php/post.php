@@ -8,6 +8,8 @@ if (isset($_POST['comment']) && !empty($_POST['comment'])) {
 
 	$username = $_SESSION['username'];
 	$comment = htmlspecialchars($_POST['comment']);
+	// Enables XSS
+	//$comment = $_POST['comment']);
 
 	$query = "INSERT INTO posts(username, usercomment) VALUES(?, ?)";
 	$result = $database->executeUpdate($query, array($username, $comment));
@@ -24,7 +26,7 @@ if (isset($_POST['comment']) && !empty($_POST['comment'])) {
 		];
 	}
 
-	
+
 	header('Content-Type: application/json');
 	echo json_encode($response);
 } else {
