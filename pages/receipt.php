@@ -12,7 +12,7 @@ $items = $db->getItems();
 
 $itemNames = [];
 foreach($items as $key) {
-	$itemNames[$key['_id']] = [$key['name'], $key['price']];
+	$itemNames[$key['_id']] = [htmlspecialchars($key['name']), htmlspecialchars($key['price'])];
 }
 
 

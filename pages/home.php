@@ -38,7 +38,7 @@ $posts = $db->getPosts();
 			Sidenvägen
 		</div>
 		<div id="user">
-			<?php echo '<span id="userName">' . $_SESSION['username'] . '</span>' ?>
+			<?php echo '<span id="userName">' . htmlspecialchars($_SESSION['username']) . '</span>' ?>
 		</div>
 		<div id="cartContent">
 			<img id="cartImg" src="../pictures/cart.png"></img>
@@ -62,13 +62,13 @@ if (isset($_SESSION['cartItems']) && count($_SESSION['cartItems']) > 0) {
 <?php
 foreach ($items as $row) {
 	echo "<div id=product>";
-	echo "<p id=pHeader>" . $row['name'] . "</p>";
-	echo "<div id=productImage><img id=image src='" . $row['image'] . "'></img> </div>";
+	echo "<p id=pHeader>" . htmlspecialchars($row['name']) . "</p>";
+	echo "<div id=productImage><img id=image src='" . htmlspecialchars($row['image']) . "'></img> </div>";
 	echo "<p id=pDesc> Product description: </br>";
-	echo $row['description'] . "</p>";
+	echo htmlspecialchars($row['description']) . "</p>";
 	echo "<p id=pPrice> <span class=\"bold\">Price</span>: ";
-	echo "<span class=\"price\">" . '$' . $row['price'] . "</span> </p>";
-	echo "<form id=\"" . $row['_id'] . "\">";
+	echo "<span class=\"price\">" . '$' . htmlspecialchars($row['price']) . "</span> </p>";
+	echo "<form id=\"" . htmlspecialchars($row['_id']) . "\">";
 	echo "Amount: <input type=\"number\" name=\"amount\" size=\"2\" min=\"1\" max=\"9\">";
 	echo "<button onclick=\"return addFunc(this)\" id=\"btn-add\">Add</button>";
 	echo "<input type=\"hidden\" name=\"sessionId\" value=" . session_id() . ">";
@@ -86,8 +86,8 @@ foreach ($items as $row) {
 <?php
 foreach ($posts as $post) {
 	echo "<div class=\"post\">";
-	echo "<p id='postUser'>" . $post['username'] . "</p>";
-	echo "<p id=\"text\">" . $post['usercomment'] . "</p>";
+	echo "<p id='postUser'>" . htmlspecialchars($post['username']) . "</p>";
+	echo "<p id=\"text\">" . htmlspecialchars($post['usercomment']) . "</p>";
 	echo "</div>";
 }
 ?>

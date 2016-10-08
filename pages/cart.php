@@ -1,18 +1,18 @@
 <?php
-	session_start();
-	require_once('../php/database.php');
+session_start();
+require_once('../php/database.php');
 
-	if(!isset($_SESSION['username'])) { // Make sure to use a good variable
-		die(header('location: ../index.php'));
-	}
+if(!isset($_SESSION['username'])) { // Make sure to use a good variable
+	die(header('location: ../index.php'));
+}
 
-	$db = new Database();
-	$items = $db->getItems();
+$db = new Database();
+$items = $db->getItems();
 
-	$itemNames = [];
-	foreach($items as $key) {
-		$itemNames[$key['_id']] = [$key['name'], $key['price']];
-	}
+$itemNames = [];
+foreach($items as $key) {
+	$itemNames[$key['_id']] = [htmlspecialchars($key['name']), htmlspecialchars($key['price'])];
+}
 ?>
 
 <!DOCTYPE html> <html lang="en">
@@ -58,21 +58,21 @@ if (isset($_SESSION['cartItems']) && count($_SESSION['cartItems']) > 0) {
 			<tr id='tHeader'>
 				<th id='product'>Product</th><th>Amount</th><th>Price/Item</th><th>Price</th>
 			</tr>
-		<?php
-			$total = 0;
-			if (isset($_SESSION['cart'])) {
-				foreach ($_SESSION['cart'] as $key => $value) {
-					echo "<tr>";
-					echo "<td id='product'>" . $itemNames[$key][0] . "	</td>";
-					echo "<td id='amount'>" . $value . "</td>";
-					echo "<td id='price/item'>" . '$' . $itemNames[$key][1] . "</td>";
-					echo "<td id='price'>" . '$' . $itemNames[$key][1]*$value . "</td>";
-					echo "</tr>";
-			}
-				$total += $itemNames[$key][1]*$value;
-			}
-			echo "<tr><td></td><td></td><td></td><td id='sum'>" . '$' . $total . "</td></tr>";
-		?>
+<?php
+$total = 0;
+if (isset($_SESSION['cart'])) {
+	foreach ($_SESSION['cart'] as $key => $value) {
+		echo "<tr>";
+		echo "<td id='product'>" . $itemNames[$key][0] . "	</td>";
+		echo "<td id='amount'>" . $value . "</td>";
+		echo "<td id='price/item'>" . '$' . $itemNames[$key][1] . "</td>";
+		echo "<td id='price'>" . '$' . $itemNames[$key][1]*$value . "</td>";
+		echo "</tr>";
+		$total += $itemNames[$key][1]*$value;
+	}
+}
+echo "<tr><td></td><td></td><td></td><td id='sum'>" . '$' . $total . "</td></tr>";
+?>
 		</table>
 	</div>
 	<div id="purchaseContainer">
@@ -88,7 +88,7 @@ if (isset($_SESSION['cartItems']) && count($_SESSION['cartItems']) > 0) {
 			<button id="btn-login">Purchase</button>
 		</form>
 	</div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src='../js/cart.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src='../js/cart.js'></script>
 </body>
 </html>
