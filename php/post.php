@@ -7,9 +7,9 @@ if (isset($_POST['comment']) && !empty($_POST['comment'])) {
 	$database = new Database();
 
 	$username = $_SESSION['username'];
-	//$comment = htmlspecialchars($_POST['comment']);
+	$comment = htmlspecialchars($_POST['comment']);
 	// Enables XSS
-	$comment = $_POST['comment'];
+	//$comment = $_POST['comment'];
 
 	$query = "INSERT INTO posts(username, usercomment) VALUES(?, ?)";
 	$result = $database->executeUpdate($query, array($username, $comment));

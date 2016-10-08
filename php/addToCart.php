@@ -2,7 +2,8 @@
 
 session_start();
 
-if (isset($_POST['id']) && isset($_POST['amount'])) {
+if (isset($_POST['id']) && isset($_POST['amount'])
+	&& isset($_POST['sessionId']) && $_POST['sessionId'] == session_id()) {
   $id = $_POST['id'];
   $amount = $_POST['amount'];
 

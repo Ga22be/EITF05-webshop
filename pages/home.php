@@ -22,7 +22,7 @@ $posts = $db->getPosts();
 <html lang="en">
 <head>
 	<!-- To Be able to load offsite addresses in SQL-injected item-->
-	<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' ajax.googleapis.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;"> -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' ajax.googleapis.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;">
 	<meta charset="UTF-8">
 	<title>Sidenvägen</title>
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
@@ -71,6 +71,7 @@ foreach ($items as $row) {
 	echo "<form id=\"" . $row['_id'] . "\">";
 	echo "Amount: <input type=\"number\" name=\"amount\" size=\"2\" min=\"1\" max=\"9\">";
 	echo "<button onclick=\"return addFunc(this)\" id=\"btn-add\">Add</button>";
+	echo "<input type=\"hidden\" name=\"sessionId\" value=" . session_id() . ">";
 	echo "</form>";
 	echo "</div>";
 }
