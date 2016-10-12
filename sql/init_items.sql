@@ -1,3 +1,7 @@
+SET foreign_key_checks = 0;
+DROP TABLE IF EXISTS items;
+SET foreign_key_checks = 1;
+
 CREATE TABLE items(
 	_id INTEGER NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL UNIQUE,
